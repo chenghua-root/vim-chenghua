@@ -4,4 +4,21 @@
     "suggest.noselect": true,                  // 补全提示时不选中
     // "suggest.autoTrigger": "none",             // 关闭补全自动提示, 若需开启自动提示，可注释或删除本行
     "inlayHint.enable": false,                 // 关闭参数自动提示
+    // "clangd.path": "",
+    "languageserver": {
+      "python": {
+        "command": "pyright-langserver",
+        "args": ["--stdio"],
+        "filetypes": ["python"],
+        "rootPatterns": ["pyproject.toml", ".git/"],
+        "initializationOptions": {
+          "python": {
+            "analysis": {
+              "autoSearchPaths": true,
+              "useLibraryCodeForTypes": true
+            }
+          }
+        }
+      }
+    }
 }

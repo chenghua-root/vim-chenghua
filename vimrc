@@ -40,6 +40,7 @@ set nu              " 设置行号
 set incsearch       " 开启实时搜索，输入字符后立即自动匹配
 "set ignorecase      " 搜索时大小写不敏感
 set updatetime=1000 " milliseconds, the swap file will be written to disk
+set autoread        " 文件在其它窗口被修改后自动加载
 
 set backspace=indent,eol,start
 colorscheme default             " /usr/share/vim/vim74/colors/ koehler:peachpuff:ron:slate
@@ -54,6 +55,12 @@ set background=light
 hi Comment ctermfg=DarkBlue     " 注释颜色, LightBlue, 246
 
 set noswapfile       " 避免产生swap文件
+
+" format python代码
+autocmd FileType python nnoremap <F8> :w<CR>:!black %<CR>:e<CR>
+
+" format json
+nnoremap <leader>j :%!jq .<CR>
 
 "**************************************************************************************************
 
@@ -364,14 +371,18 @@ nnoremap <f12> :%s/[ \t\r]\+$//g<cr>''
 "显示空格
 highlight ExtraWhitespace ctermbg=red guibg=red
 
-match ExtraWhitespace /\s\+$/
-augroup ExtraWhitespaceGroup
-    autocmd!
-    autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-    autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-    autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-    autocmd BufWinLeave * call clearmatches()
-augroup END
+" match ExtraWhitespace /\s\+$/
+" augroup ExtraWhitespaceGroup
+"     autocmd!
+"     autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+"     autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+"     autocmd BufWinLeave * call clearmatches()
+" augroup END
+
+" 插入模式下才显示
+autocmd InsertEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 
 set rtp+=$GOPATH/src/golang.org/x/lint/misc/vim
 

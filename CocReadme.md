@@ -25,7 +25,7 @@ coc帮助文档 ~/.vim/plugged/coc.nvim/doc/coc.txt
 :CocOpenLog
 
 ## coc插件
-CocInstall coc-json coc-tsserver coc-clangd coc-rust-analyzer
+CocInstall coc-json coc-tsserver coc-clangd coc-rust-analyzer coc-go
 
 ### 列出安装插件
 :CocList extensions
@@ -56,6 +56,10 @@ ln -s build/compile_commands.json .
 ## Rust插件
 安装指南：https://blog.csdn.net/m0_37952030/article/details/118372011
 :CocInstall coc-rust-analyzer   // 进入rs文件后，会提示是否下载rust-analyzer
+
+## Python
+安装pyright: sudo npm install -g pyright
+coc-settings.json中添加python相关
 
 ## 问题
 
