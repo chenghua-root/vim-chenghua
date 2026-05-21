@@ -23,6 +23,8 @@
   postBuffer = 524288000  # 500MB
 [push]
   default = current
+[remote]
+  pushDefault = origin
 [color]
   ui = true
 
@@ -71,3 +73,8 @@
 # git push origin :refs/tags/<tagname> # 删除远端tag
 # git fetch --tags -f            # 更新本地tags
 # git ck -b {tag} tags/{tag}
+[https]
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential

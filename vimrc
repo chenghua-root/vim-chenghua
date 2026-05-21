@@ -225,7 +225,12 @@ set noshowmode                          " 关闭模式提示
 "Leaderf[!]:感叹号表示直接进入normal模式；如果没有感叹号则是输入模式；可以使用tab键进行切换
 let g:Lf_Gtagsconf='/usr/local/share/gtags/gtags.conf'
 let g:Lf_GtagsAutoGenerate = 1
-let g:Lf_Gtagslabel = 'native-pygments'
+" 指向我们刚刚创建的文件
+let g:Lf_GtagsConf = '/usr/local/share/gtags/gtags.conf'
+" 使用内置的 native 解释器，不要用 pygments
+let g:Lf_Gtagslabel = 'native'
+" let g:Lf_Gtagslabel = 'native-pygments'
+
 let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
 let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 let g:Lf_WorkingDirectoryMode = 'Ac'
